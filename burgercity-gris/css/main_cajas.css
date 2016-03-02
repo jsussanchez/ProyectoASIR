@@ -1,0 +1,123 @@
+
+/* ==========================================================================
+   Autor: Jesús Sánchez;
+   ========================================================================== */
+*{
+	border:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+	font-size:1rem;
+}
+.contenedor{
+	width:1200px;
+	padding:0 0 10px 0;
+}
+.contenedor > h1 {
+	text-align:center;
+	font-weight:normal;
+	padding:20px 0;
+	font-size:1.5em;
+}
+.contenedor > p {
+	clear:both;
+	text-align:center;
+	font-weight:normal;
+	padding:20px 0;
+	font-size:1.1em;
+}
+.contenedor > div {
+	padding:10px;
+	float:left;
+	display:inline;
+	border:1px solid #fff;
+	background:#ddd;
+	text-align:center;
+	font-size:0.70em;
+}
+.contenedor > div:hover {
+	background:#ccc;
+}
+
+/* Sistema de Cajas */
+	
+.caja1 {
+	width:8.33%;
+}
+.caja2 {
+	width:16.66%;
+}
+.caja3 {
+	width:25%;
+}
+.caja4 {
+	width:33.33%;
+}
+.caja5 {
+	width:41.66%;
+}
+.caja6 {
+	width:50%;
+}
+.caja7 {
+	width:58.33%;
+}
+.caja8 {
+	width:66.66%;
+}
+.caja9 {
+	width:75%;
+}
+.caja10 {
+	width:83.33%;
+}
+.caja11 {
+	width:91.66%;
+}
+.caja12 {
+	width:100%;
+}
+/* Media queries */
+@media only screen and (min-width: 1200px) {
+	.contenedor{
+		width:1200px;
+		margin:0 auto;
+	}
+}
+ 
+@media only screen and (max-width: 1200px) and (min-width: 980px) {
+	.contenedor{
+		width:960px;
+		margin:0 auto;
+	}
+}
+ 
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+	.contenedor{
+		width:720px;
+		margin: 0 auto;
+	}
+}
+ 
+@media only screen and (max-width: 479px) {
+	.contenedor{
+		width:320px;
+		margin:0 auto;
+	}
+	div[class*='caja'] {
+		width:100%;
+	}
+}
+ 
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.contenedor{
+		width:480px;
+		margin:0 auto;
+	}
+	div[class*='caja'] {
+		width:100%;
+	}
+}
