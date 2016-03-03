@@ -29,7 +29,8 @@ if (isset($_SESSION['usuario']))
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>  
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="js/ajax.js"></script> 
 </head>
 <body>
   <header id="navegador">
@@ -38,7 +39,7 @@ if (isset($_SESSION['usuario']))
           <img src="img/edificios_gris.png" alt="">          
           <a class="scroll" href="#abrirPedido"><img src="img/logotipo_burgercity_BK.png" alt="burgercity" class="logo"></a>
           <div class="caja3">
-            <div class="caja10">
+            <div class="caja6">
                 <?php                   
                     echo 'Usuario :'.$_SESSION['usuario'].'';
                   ?>
@@ -48,6 +49,7 @@ if (isset($_SESSION['usuario']))
                   <i class="fa fa-sign-out"></i>
                 </a>
               </div>
+              <div class="caja4"><i class="fa fa-shopping-cart fa-2x"></i><span id="numArticulos" class="numArticulos">1</span></div>             
             </div>
       </div>
     </div>
@@ -494,69 +496,31 @@ if (isset($_SESSION['usuario']))
 
 <!-- Ventana Modal abrirPedido -->
     <div id="abrirPedido" class="pedido">
-      <div class="contenedor">
-          <div class="caja2"></div>
-          <div class="caja8 divpedido">
-            <a href="#cerrar" title="Cerrar" class="cerrar"><i class="fa fa-times"></i></a>
-                 
-            <div class="caja12">
-              <h2>SU PEDIDO</h2>
-            </div>
-            <div class="caja12 titulos">
-                <div class="caja3">TIPO</div>
-                <div class="caja3">NOMBRE</div>
-                <div class="caja3">CANTIDAD</div>
-                <div class="caja2">PRECIO</div>
-            </div>
-            <div class="caja12 articulos">                                                
-                    <?php 
-                        //listamos los articulos de ese pedido
-                        $sql = "SELECT articulo_id, nombre, tipo, cantidad, precio FROM articulo_pedido_activo WHERE user = '$user'";
-                        $result = mysqli_query($link,$sql);
-                        if (!$result){
-                                  echo "Error1";            
-                              } else {
-                                    if (mysqli_num_rows($result) > 0) {                                        
-                                        while($fila = mysqli_fetch_assoc($result)) 
-                                        {
-                                        echo '<div class="caja3">'.$fila["tipo"].' </div><div class="caja3">'.$fila["nombre"].'</div><div class="caja3">'.$fila["cantidad"].' </div><div class="caja2">'.$fila["precio"].'€</div><div class="caja1"><a href="javascript:;" onclick="BorrarArticulo(\''.$fila["articulo_id"].'\' );return false;"><i class="fa fa-times" style="color: red"></i></a></div>';                                        
-                                        }
-                                    } else {
-                                      echo "0 resultados";
-                                    };
-                        };            
-
-                    ?>
-                </div>
-                <div class="caja12 cajaPrecio">
-                    <div class="caja9 txtTotal">TOTAL:</div>
-                    <div class="caja2 precioTotal">
-                        <?php
-                            $sql = "SELECT SUM(precio) AS precio_total FROM articulo_pedido_activo WHERE user = '$user'";
-                            $result = mysqli_query($link,$sql);
-                            if (!$result){
-                                      echo "Error1";            
-                                  } else {
-                                      $fila = mysqli_fetch_array($result);
-                                      echo $fila['precio_total']."€";
-                                  };
-                        ?>
-                    </div>
-                    <div class="caja1"></div>
-                </div>                     
-                <div class="caja12">
-                  <button type="submit"class="boton enviar" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);">
-                    <span class="boton-texto">PAGAR</span>
-                    <span class="boton-icono"><i class="fa fa-arrow-right"></i></span>                  
-                  </button>  
-                </div>          
-              
-             </div> 
-             
-          </div>
-          <div class="caja2"></div>
-        </div>
-    </div> 
+        <div class="contenedor">
+                  <div class="caja2"></div>
+                  <div class="caja8 divpedido">
+                      <a href="#cerrar" title="Cerrar" class="cerrar"><i class="fa fa-times"></i></a>                           
+                      <div class="caja12">
+                        <h2>SU PEDIDO</h2>
+                      </div>
+                      <div class="caja12 titulos">
+                          <div class="caja3">TIPO</div>
+                          <div class="caja3">NOMBRE</div>
+                          <div class="caja3">CANTIDAD</div>
+                          <div class="caja2">PRECIO</div>
+                      </div>
+                      <div id="contenido" class="articulos">
+                      </div>             
+                      <div class="caja12">
+                        <button type="submit"class="boton enviar">
+                          <span class="boton-texto">PAGAR</span>
+                          <span class="boton-icono"><i class="fa fa-arrow-right"></i></span>                  
+                        </button>  
+                      </div>
+                    </div> 
+                    <div class="caja2"></div>         
+      </div>      
+    </div>
 
 </body>
 </html>

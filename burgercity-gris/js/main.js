@@ -40,3 +40,4 @@ function BorrarArticulo(articulo_id)
           } 
     });
   };
+

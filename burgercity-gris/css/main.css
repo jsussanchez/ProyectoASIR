@@ -202,7 +202,7 @@ header#navegador .fa-circle{
 	vertical-align: middle;
 }
 
-header#navegador .logout {
+header#navegador .logout, .numpedido {
 	color:#fff;
 	background-color: #FFC107;
 	line-height: 25px;
@@ -211,6 +211,9 @@ header#navegador .logout {
 	border-radius: 12px;
 	-webkit-border-radius: 12px;
 	-moz-border-radius:12px;
+}
+header#navegador .numArticulos{
+	
 }
 header#navegador .logout a {
 	color: #000;
@@ -221,28 +224,27 @@ header#navegador .logout a:hover {
 header#navegador .enlaces-derecha >span > a:hover {
 	color: #FFC107;
 }
-header#navegador .edificios{
-
-}
 header#navegador .caja3{
 	position: absolute;
 	margin: 0;
-	padding: 3px;
+	padding: 5px;
 	font-weight: bold;
 	top: 50%;
 	right: 7%;
 	border: 2px dashed white;
 }
-header#navegador .caja10{
+header#navegador .caja6{
 	margin: 0;
 	padding: 0;
 	text-align: right;
 	padding-right: 10px;
 }
-header#navegador .caja2{
+header#navegador .caja2, .caja4{
 	margin: 0;
 	padding: 0;
 }
+
+
  /* PRINCIPAL */
 section#principal .inicio{
 	height:9em;
